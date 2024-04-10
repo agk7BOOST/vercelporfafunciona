@@ -9,9 +9,9 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-from dotenv import load_dotenv
-load_dotenv()
-from os import environ, path 
+from dotenv import load_dotenv #agregado
+load_dotenv() #agregado
+from os import environ, path #agregado  
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,14 +22,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = environ.get('DJANGO_SECRET_KEY')
 
-WSGI_APPLICATION = 'python_heroku_task.wsgi.app'
+SECRET_KEY = environ.get('DJANGO_SECRET_KEY') #modificado
+
+WSGI_APPLICATION = 'python_heroku_task.wsgi.app' #agregado
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app'] #modificado
 
 
 # Application definition
@@ -72,7 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'python_heroku_task.wsgi.application'
+WSGI_APPLICATION = 'python_heroku_task.wsgi.application' 
 
 
 # Database
@@ -81,15 +82,15 @@ WSGI_APPLICATION = 'python_heroku_task.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': environ.get('SUPABASE_USER'),
-        'PASSWORD': environ.get('SUPABASE_PASSWORD'),
-        'HOST': environ.get('SUPABASE_HOST'),
+        'NAME': 'postgres', #modificado
+        'USER': environ.get('SUPABASE_USER'), #modificado en .env
+        'PASSWORD': environ.get('SUPABASE_PASSWORD'),#modificado en .env
+        'HOST': environ.get('SUPABASE_HOST'),#modificado en .env
         'PORT': '5432',
         'OPTIONS': {
-						'sslmode': 'verify-full',
-						'sslrootcert': path.join(BASE_DIR, 'prod-ca-2021.crt')
-    }
+			'sslmode': 'verify-full',
+			'sslrootcert': path.join(BASE_DIR, 'prod-ca-2021.crt')
+    } #agregado
 }
 }
 
